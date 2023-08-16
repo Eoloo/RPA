@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="SaasAutomation" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="SaasAutomation" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="ContactName" Type="InArgument(x:String)" />
     <x:Property Name="Email" Type="InArgument(x:String)" />
@@ -48,6 +48,10 @@
       <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
       <x:String>System.Security</x:String>
       <x:String>System.ComponentModel</x:String>
+      <x:String>UiPath.CV</x:String>
+      <x:String>UiPath.Shared.ObjectLibrary</x:String>
+      <x:String>UiPath.CV.Activities</x:String>
+      <x:String>UiPath.CV.Activities.Interfaces</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -102,15 +106,24 @@
       <AssemblyReference>WindowsBase</AssemblyReference>
       <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.CV.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="SaasAutomation" sap:VirtualizedContainerService.HintSize="500,377" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="SaasAutomation" sap:VirtualizedContainerService.HintSize="588,1422" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="ui:UiElement" Name="Successful" />
+    </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="438,266" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="526,373" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
         <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: (1) #103 - EOLOO" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="8441a172-c44b-447c-8994-7e2a2f2d4392" Version="V2">
           <uix:NApplicationCard.Body>
@@ -118,12 +131,25 @@
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
               </ActivityAction.Argument>
-              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,1659" sap2010:WorkflowViewState.IdRef="Sequence_2">
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,1851" sap2010:WorkflowViewState.IdRef="Sequence_2">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
+                <ui:Activate DelayBefore="{x:Null}" DelayMS="{x:Null}" sap:VirtualizedContainerService.HintSize="388,87" sap2010:WorkflowViewState.IdRef="Activate_1">
+                  <ui:Activate.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="1b21814a-3e95-4247-88a2-42fa531e195f">
+                      <ui:Target.TimeoutMS>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:Target.TimeoutMS>
+                      <ui:Target.WaitForReady>
+                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                      </ui:Target.WaitForReady>
+                    </ui:Target>
+                  </ui:Activate.Target>
+                </ui:Activate>
+                <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="388,25" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1" />
                 <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'BUTTON'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="8441a172-c44b-447c-8994-7e2a2f2d4392" Version="V3">
                   <uix:NClick.Target>
                     <uix:TargetAnchorable BrowserURL="https://desk.zoho.com/agent/eoloo/eoloo/tickets/details/891161000000254001" DesignTimeRectangle="1076, 119, 24, 32" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'BUTTON'" FullSelectorArgument="&lt;webctrl tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='BUTTON' type='' class='zd_button_tag zd-semanticbutton-buttonReset zd-allmoduleformshortcut-addmoduleicon zd447337210e zd54616f0b48' aaname='' /&gt;" Guid="fba535e9-9fc6-4dee-9698-4a07d8b928da" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABwAAAAkCAYAAACaJFpUAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADQSURBVFhHY9A18ftPT0x/C7mKX/8HYZPen2Campg3985/Be82+lkIw8iW0sVCkE/paiEIj1pIdTxqIdXxqIVUx4PfQq3ZX/4vuP7r/4l7v1Hwgevf/1fMfodVDzIm3cJl3/9f+PYfE3z7/X/GMhpYyFX85r/jejRLgZYtWPv+vxBW9aiYDAtB+M1/yxXf/5/4BLTsE9BnK4izDITJtBCCtWZ/+p9ARLwhY4osJAePWkh1PGoh1fGohVTHdLWQ7k19unVmsHbXkDn0wHS20O8/AF2JHDs/wLhgAAAAAElFTkSuQmCC" InformativeScreenshot="00a26ab75aa9143ef162ebe5bd68832d.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='(1) #103 - EOLOO' /&gt;" SearchSteps="FuzzySelector, Image" Version="V2" Visibility="Interactive" />
@@ -134,7 +160,7 @@
                     <uix:TargetAnchorable BrowserURL="https://desk.zoho.com/agent/eoloo/eoloo/tickets/details/891161000000254001" DesignTimeRectangle="880, 249, 220, 35" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'TicketT+'" FullSelectorArgument="&lt;webctrl aaname='TicketT+' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='TicketT+' tag='A' type='' class='zd_a_tag zd-listitem-list zd-listitem-varClass zd-listitem-medium zd-listitem-default zd-listitem-defaultEffect zd-listitem-withBorder zdff266bc91b zdfd3b1bbb3b zdbd11ce84cf' check:innerText='Ticket&amp;#xA;T+' /&gt;" Guid="cdcca222-1375-4cae-af16-e723c2b32292" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAOAAAAAnCAYAAAAWwETtAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAK0SURBVHhe7du/axNhGMDx+zPuD+hSyFJwMKMFl4CDgS4BJ0dxCk6lDiU4SOmUSTIVrmOHgosQl0ICFlIh0mCjiW21rc1wWMGMj+/d+zY/2p7Wau4J8v3Alb733oUuX943L9S75XnimQtAer6c9OToa0+8o9ZrqTx96G4DSMMwQPMjGgBIDwECiggQUESAgCICBBQRIKCIAAFFBAgoIkBAEQECiggQUESAgKJUAqwt2/+0uHzlJTh0D13LsQQLnuTXj90Y+Av7B1J/077iOpBP7pFJS3kFrEnJhHcxoMbqrHh3yrLrxsluHmC/FUjxRcONgFFn0mq0ZXvvzI3TMxUBXt/NA4xX4eWaGwGjkgPs7X2U+rvJdTEVAR6v58VbCExeVri1IoWMb7epMzkpbnTczHiA/XpJsn5BKq1+PO5sFiU3Y7e3fqYg5R17f3wL/KfbXvz/CHAY4M6KZE0k5WYYz4XNihR8Xx5tRuNhgH3zXM7PSqluI+tv2xiDbjw0EUfjRanaaVZA/MLlAMOTU+nun8r75gepv/0c/949/CY/3Py/MnUB1pbM6nUhlLDdEZujC3CpZKIcxheJ3ptdrkoYhu5qSPmeJ4tbbp4AkYgAXYC/+45n532zInr3K3K+MR3cz8zL/N3xq7hpP4sAkYwt6NgKOPd8/LQybNVkN/7TXKBrNQke+JJ9/NJF2JfqE/PeavIpJwEiGQEOAowOVuaig5UL3wGLr6Lt5sgK+d181m1PsiaqaObK74BeTiptO248M6umCXa4aQXOJQc4aVMXYKSzUZScOwX1M8mnoNIN4jgLa3Y+PgUdvFeQlS0bcaxVkXx8QupLadvdA5SlHCCAUQQIKCJAQBEBAooIEFBEgIAiAgQUESCgiAABRQQIKCJAQBEBAooIEFBEgIAiAgQU2QB78hOY9qIffbTcpwAAAABJRU5ErkJggg==" InformativeScreenshot="60d7b272e44c40105f72bed2b150a2c1.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='(1) #103 - EOLOO' /&gt;" SearchSteps="FuzzySelector, Image" Version="V2" Visibility="Interactive" />
                   </uix:NClick.Target>
                 </uix:NClick>
-                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Contact Name'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,218" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="8441a172-c44b-447c-8994-7e2a2f2d4392" Text="EOLOO" Version="V3">
+                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ContinueOnError="False" DisplayName="Type Into 'Contact Name'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,218" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="8441a172-c44b-447c-8994-7e2a2f2d4392" Text="[ContactName]" Version="V3">
                   <uix:NTypeInto.Target>
                     <uix:TargetAnchorable BrowserURL="https://desk.zoho.com/agent/eoloo/eoloo/tickets/new" DesignTimeRectangle="118, 358, 260, 28" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT ZD_31'" FullSelectorArgument="&lt;webctrl id='ZD_31' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='ZD_31' tag='INPUT' type='text' class='zd_input_tag zd-textbox-container zd-textbox-basic zd-textbox-varClass zd-textbox-xmedium zd-textbox-primary zd266b1e491d zd-textbox-effect zd-textbox-borderColor_default' aaname='Contact Name' /&gt;" Guid="e28923b0-792a-4102-882e-d8bde2a6748b" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAQgAAAAgCAYAAADufuYQAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACDSURBVHhe7daxCcAwEARB9d+fQ8Uu4w0GKdsOZuBaWG4NQBAIIAkEkAQCSAIBJIEAkkAASSCAJBBAEgggCQSQBAJIAgEkgQCSQABJIIAkEEASCCAJBJAEAkgCASSBAJJAAEkggCQQQBIIIAkEkAQCSAIBpBuIZ79mZv8ODwJIAgGEmQ95VB4eigyt5QAAAABJRU5ErkJggg==" InformativeScreenshot="f0d37168f81d6b1c74ca819a6f6b1f74.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='EOLOO' /&gt;" SearchSteps="FuzzySelector, Image" Version="V2" Visibility="Interactive">
                       <uix:TargetAnchorable.Anchors>
@@ -146,7 +172,7 @@
                   </uix:NTypeInto.Target>
                 </uix:NTypeInto>
                 <uix:NKeyboardShortcuts ActivateBefore="True" ClickBeforeMode="None" DisplayName="Keyboard Shortcuts" sap:VirtualizedContainerService.HintSize="388,179" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_1" ScopeIdentifier="8441a172-c44b-447c-8994-7e2a2f2d4392" Shortcuts="[d(hk)][k(enter)][u(hk)]" Version="V3" />
-                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Subject'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,218" sap2010:WorkflowViewState.IdRef="NTypeInto_2" ScopeIdentifier="8441a172-c44b-447c-8994-7e2a2f2d4392" Text="RPA Process" Version="V3">
+                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ContinueOnError="False" DisplayName="Type Into 'Subject'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,218" sap2010:WorkflowViewState.IdRef="NTypeInto_2" ScopeIdentifier="8441a172-c44b-447c-8994-7e2a2f2d4392" Text="[Subject]" Version="V3">
                   <uix:NTypeInto.Target>
                     <uix:TargetAnchorable BrowserURL="https://desk.zoho.com/agent/eoloo/eoloo/tickets/new" CvTextArgument="EOLOO" CvType="Text" DesignTimeRectangle="118, 551, 650, 28" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT ZD_35'" FullSelectorArgument="&lt;webctrl id='ZD_35' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='ZD_35' tag='INPUT' type='text' class='zd_input_tag zd-textbox-container zd-textbox-basic zd-textbox-varClass zd-textbox-xmedium zd-textbox-primary zd266b1e491d zd-textbox-effect zd-textbox-borderColor_default' aaname='Subject' /&gt;" Guid="a95b80c3-904e-48cb-809a-12536bee347a" ImageBase64="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" InformativeScreenshot="261815a165db928de59cc23ef3f99a1e.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='EOLOO' /&gt;" SearchSteps="FuzzySelector, Image, CV" Version="V2" Visibility="Interactive">
                       <uix:TargetAnchorable.Anchors>
@@ -157,7 +183,7 @@
                     </uix:TargetAnchorable>
                   </uix:NTypeInto.Target>
                 </uix:NTypeInto>
-                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Email'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,218" sap2010:WorkflowViewState.IdRef="NTypeInto_3" ScopeIdentifier="8441a172-c44b-447c-8994-7e2a2f2d4392" Text="eoloo420@gmail.com" Version="V3">
+                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ContinueOnError="False" DisplayName="Type Into 'Email'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,218" sap2010:WorkflowViewState.IdRef="NTypeInto_3" ScopeIdentifier="8441a172-c44b-447c-8994-7e2a2f2d4392" Text="[Email]" Version="V3">
                   <uix:NTypeInto.Target>
                     <uix:TargetAnchorable BrowserURL="https://desk.zoho.com/agent/eoloo/eoloo/tickets/new" DesignTimeRectangle="118, 357, 260, 28" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT ZD_33'" FullSelectorArgument="&lt;webctrl id='ZD_33' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='ZD_33' tag='INPUT' type='text' class='zd_input_tag zd-textbox-container zd-textbox-basic zd-textbox-varClass zd-textbox-xmedium zd-textbox-primary zd266b1e491d zd-textbox-effect zd-textbox-borderColor_default' aaname='Email' /&gt;" Guid="367e5f1a-5647-4b75-a273-1eae361e25fc" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAQgAAAAgCAYAAADufuYQAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACDSURBVHhe7daxCcAwEARB9d+fQ8Uu4w0GKdsOZuBaWG4NQBAIIAkEkAQCSAIBJIEAkkAASSCAJBBAEgggCQSQBAJIAgEkgQCSQABJIIAkEEASCCAJBJAEAkgCASSBAJJAAEkggCQQQBIIIAkEkAQCSAIBpBuIZ79mZv8ODwJIAgGEmQ95VB4eigyt5QAAAABJRU5ErkJggg==" InformativeScreenshot="36e87d3499af22395dc1d3d2358a95f8.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='EOLOO' /&gt;" SearchSteps="FuzzySelector, Image" Version="V2" Visibility="Interactive">
                       <uix:TargetAnchorable.Anchors>
@@ -187,6 +213,63 @@
           </sap:WorkflowViewStateService.ViewState>
         </uix:NApplicationCard>
       </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,210" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Error]" Message="[&quot;Ticket no created on Zoho&quot;]" />
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
     </TryCatch>
+    <ui:WaitUiElementAppear WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Find Element 'BUTTON'" FoundElement="[Successful]" sap:VirtualizedContainerService.HintSize="526,107" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_1">
+      <ui:WaitUiElementAppear.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f530622b-1574-4923-852a-7203e015eb35" InformativeScreenshot="64c450d1d88e5bd3ddbde149e6e00060" Selector="&lt;html app='chrome.exe' title='(3) #105 - EOLOO' /&gt;&lt;webctrl aaname='Close Ticket' tag='BUTTON' type='button' /&gt;">
+          <ui:Target.TimeoutMS>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:Target.TimeoutMS>
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:WaitUiElementAppear.Target>
+    </ui:WaitUiElementAppear>
+    <If Condition="True" sap:VirtualizedContainerService.HintSize="526,751" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <Sequence sap:VirtualizedContainerService.HintSize="376,229" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;The ticket was created successfully on Zoho Desktop&quot;]" />
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence sap:VirtualizedContainerService.HintSize="492,340" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Sequence sap:VirtualizedContainerService.HintSize="450,252" sap2010:WorkflowViewState.IdRef="Sequence_5">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Fatal]" Message="[&quot;The Zoho ticket could not be created&quot;]" />
+          </Sequence>
+        </Sequence>
+      </If.Else>
+    </If>
   </Sequence>
 </Activity>
